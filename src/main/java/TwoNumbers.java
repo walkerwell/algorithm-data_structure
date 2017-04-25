@@ -28,6 +28,12 @@ public class TwoNumbers {
         System.out.println(a[0]+" "+a[1]);
     }
 
+    /**
+     * O n 的时间复杂度
+     * @param numbers
+     * @param target
+     * @return
+     */
     public int[] twoNums(int [] numbers,int target){
         int [] result = new int [2];
         Map<Integer,Integer> map = new HashMap();
@@ -39,6 +45,26 @@ public class TwoNumbers {
             }
             /** 目的是为了获取 numbers[i] 和 其下标 i  **/
             map.put(numbers[i],i);
+        }
+        return result;
+    }
+
+    /**
+     * O n * n 的时间复杂度
+     * @param numbers
+     * @param target
+     * @return
+     */
+    public int[] BF(int [] numbers,int target){
+        int result [] = new int[2];
+        for(int i=0 ;i<numbers.length-2;i++){
+            for(int j=i;j<numbers.length-1;j++){
+                if(numbers[i] + numbers[j] == target){
+                    result[0] = i;
+                    result[1] = j;
+                    break;
+                }
+            }
         }
         return result;
     }
