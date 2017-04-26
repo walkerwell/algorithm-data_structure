@@ -6,7 +6,33 @@ import org.junit.Test;
  * Created by wubo on 2017-4-25.
  */
 public class AddTwoNumbers {
+
+    @Test
+    public void testRun(){
+        ListNode l1 = new ListNode(9);
+        l1.next = new ListNode(1);
+        l1.next.next = new ListNode(6);
+//        l1.next.next.next = new ListNode(3);
+
+        ListNode l2 = new ListNode(0);
+//        l2.next = new ListNode(6);
+//        l2.next.next = new ListNode(4);
+
+        ListNode result = addTwoNumbers(l1,l2);
+        while(result!=null){
+            System.out.print(result.val);
+            result = result.next;
+        }
+    }
+
     /**
+     Definition for singly-linked list.
+     */
+    class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) { val = x; }
+    }    /**
      *
      You are given two non-empty linked lists representing two non-negative integers.
      The digits are stored in reverse order and each of their nodes contain a single digit.
@@ -17,22 +43,45 @@ public class AddTwoNumbers {
      Output: 7 -> 0 -> 8
 
      */
-    @Test
-    public void testRun(){
 
-    }
 
     /**
-     Definition for singly-linked list.
+     *  Own method
+     * @param l1
+     * @param l2
+     * @return
      */
-    class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) { val = x; }
-    }
     public ListNode addTwoNumbers(ListNode l1, ListNode l2){
-        ListNode listNode = new ListNode(1);
-
-        return listNode;
+        ListNode result = new ListNode(0);
+        ListNode listNode = result;
+        int emp =0;
+        while(l1!=null && l2!=null){
+            listNode.val = l1.val + l2.val + emp;
+            emp=0;
+            if(listNode.val>9){
+                emp = listNode.val/10;
+                listNode.val = 0;
+            }
+            l1=l1.next;l2=l2.next;
+            if(l1!=null || l2!=null) {
+                listNode.next = new ListNode(0);
+                listNode = listNode.next;
+            }
+        }
+        while(l1!=null){
+            listNode.val = emp + l1.val;
+            l1=l1.next;
+            listNode = listNode.next;
+            if(l1!=null)
+                listNode.next = new ListNode(0);
+        }
+        while(l2!=null){
+            listNode.val = emp + l2.val;
+            l2=l2.next;
+            listNode = listNode.next;
+            if(l2!=null)
+                listNode.next = new ListNode(0);
+        }
+        return result;
     }
 }
