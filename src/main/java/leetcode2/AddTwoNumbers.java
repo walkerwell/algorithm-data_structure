@@ -15,8 +15,8 @@ public class AddTwoNumbers {
 //        l1.next.next.next = new ListNode(3);
 
         ListNode l2 = new ListNode(0);
-//        l2.next = new ListNode(6);
-//        l2.next.next = new ListNode(4);
+        l2.next = new ListNode(6);
+        l2.next.next = new ListNode(4);
 
         ListNode result = addTwoNumbers(l1,l2);
         while(result!=null){
@@ -47,6 +47,7 @@ public class AddTwoNumbers {
 
     /**
      *  Own method
+     *  O n
      * @param l1
      * @param l2
      * @return
@@ -55,6 +56,7 @@ public class AddTwoNumbers {
         ListNode result = new ListNode(0);
         ListNode listNode = result;
         int emp =0;
+        //处理长度相同的部分
         while(l1!=null && l2!=null){
             listNode.val = l1.val + l2.val + emp;
             emp=0;
@@ -68,19 +70,34 @@ public class AddTwoNumbers {
                 listNode = listNode.next;
             }
         }
+        //处理长度不同的情况
         while(l1!=null){
             listNode.val = emp + l1.val;
+            if(listNode.val>9){
+                emp = listNode.val/10;
+                listNode.val = 0;
+            }
             l1=l1.next;
-            listNode = listNode.next;
-            if(l1!=null)
+            if(l1!=null) {
                 listNode.next = new ListNode(0);
+                listNode = listNode.next;
+            }
         }
         while(l2!=null){
             listNode.val = emp + l2.val;
+            if(listNode.val>9){
+                emp = listNode.val/10;
+                listNode.val = 0;
+            }
             l2=l2.next;
-            listNode = listNode.next;
-            if(l2!=null)
+            if(l2!=null) {
                 listNode.next = new ListNode(0);
+                listNode = listNode.next;
+            }
+        }
+        //收尾 看看前面计算有没有产生进位的
+        if(emp!=0){
+            listNode.next = new ListNode(1);
         }
         return result;
     }
