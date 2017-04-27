@@ -10,11 +10,11 @@ public class AddTwoNumbers {
     @Test
     public void testRun(){
         ListNode l1 = new ListNode(9);
-//        l1.next = new ListNode(1);
+        l1.next = new ListNode(8);
 //        l1.next.next = new ListNode(6);
 //        l1.next.next.next = new ListNode(3);
 
-        ListNode l2 = new ListNode(9);
+        ListNode l2 = new ListNode(1);
 //        l2.next = new ListNode(6);
 //        l2.next.next = new ListNode(4);
 
@@ -71,9 +71,12 @@ public class AddTwoNumbers {
                 listNode = listNode.next;
             }
         }
+        emp=1;
+        //8  1
         //处理长度不同的情况
         while(l1!=null){
             listNode.val = emp + l1.val;
+            emp=0;
             //产生进位
             if(listNode.val>9){
                 emp = 1;
@@ -87,6 +90,7 @@ public class AddTwoNumbers {
         }
         while(l2!=null){
             listNode.val = emp + l2.val;
+            emp=0;
             //产生进位
             if(listNode.val>9){
                 emp = 1;
