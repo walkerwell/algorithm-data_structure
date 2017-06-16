@@ -1,4 +1,4 @@
-package leetcode2;
+package leetcode.leetcode2;
 
 import org.junit.Test;
 
@@ -46,8 +46,9 @@ public class AddTwoNumbers {
 
 
     /**
+     * 蠢蛋的思想  为啥不用其中一个链表 value + 另一个链表的value？
      *  Own method
-     *  O n
+     *  O n 时间复杂度   O n 空间复杂度
      * @param l1
      * @param l2
      * @return

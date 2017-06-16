@@ -1,4 +1,4 @@
-package leetcode1;
+package leetcode.leetcode1;
 
 import org.junit.Test;
 
@@ -26,7 +26,7 @@ public class TwoNumbers {
      */
     @Test
     public void testRun (){
-        int a [] = twoNums(new int[]{-1, 4, 3, 0}, 7);
+        int a [] = twoNum(new int[]{-1, 4, 3, 0}, 7);
         System.out.println(a[0]+" "+a[1]);
     }
 
@@ -49,6 +49,20 @@ public class TwoNumbers {
             map.put(numbers[i],i);
         }
         return result;
+    }
+
+    public int[] twoNum(int [] numbers,int target){
+        int res [] = new int[2];
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int i=0;i<numbers.length;i++){
+            if(map.containsKey(numbers[i])){
+                res [0] = map.get(numbers[i]);
+                res [1] = i;
+                break;
+            }
+            map.put(target - numbers[i],i);
+        }
+        return res;
     }
 
     /**
