@@ -1,4 +1,4 @@
-__author__ = 'wubo'
+# -*- coding:utf-8 -*-
 matrix = []
 for _ in xrange(4):
     matrix.append(map(int,raw_input().split()))
