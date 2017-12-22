@@ -53,7 +53,7 @@ public class TwoNumbers {
 
     public int[] twoNum(int [] numbers,int target){
         int res [] = new int[2];
-        Map<Integer,Integer> map = new HashMap<>();
+        Map<Integer,Integer> map = new HashMap();
         for(int i=0;i<numbers.length;i++){
             if(map.containsKey(numbers[i])){
                 res [0] = map.get(numbers[i]);
