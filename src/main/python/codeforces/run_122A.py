@@ -1,15 +1,12 @@
-s=raw_input()
-other=0
-for i in s :
-    if (i<>'4' and i<>'7'):
-        other=1
-        break
-if(other==0):
-    print "YES"
-else:
-    a=int(s)
-    if(a%4==0 or a%7==0):
+n=input()
+def isLucky(n):
+    s=""+(str)(n)
+    for i in s:
+        if(i<>'4' and i<>'7'):
+            return False
+    return True
+for i in range(n+1):
+    if(isLucky(i) and n%i==0):
         print "YES"
-
-    else:
-        print "NO"
+        exit(0)
+print "NO"
