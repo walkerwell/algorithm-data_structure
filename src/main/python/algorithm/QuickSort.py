@@ -22,11 +22,11 @@ def partition(matrix,low,high):
     v = matrix[low]
     while(True):
         while(i<=j):
-            if(matrix[i]>=v): # 1.大于等于决定升序还是降序(见qq.py) 2.加上等于的判断避免算法在大量重复的元素是陷入N方级别
+            if(matrix[i]>=v): # 1.大于小于决定排序结果是升序还是降序(见qq.py) 2.加上等于的判断避免算法在大量重复的元素是陷入N方级别
                 break
             i+=1
         while(i<=j):
-            if matrix[j]<=v: # 1.大于等于决定升序还是降序(见qq.py) 2.加上等于的判断避免算法在大量重复的元素是陷入N方级别
+            if matrix[j]<=v: # 1.大于小于决定排序结果是升序还是降序(见qq.py) 2.加上等于的判断避免算法在大量重复的元素是陷入N方级别
                 break
             j-=1
         if(i>=j):
