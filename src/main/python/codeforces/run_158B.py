@@ -1,22 +1,39 @@
 n=input()
-a=map((int),raw_input().split())
-a.sort()
-res=0
-mark=[]
-for i in range(n):
-    mark.append(1)
-index=len(a)-1
-while(index>-1):
-    if(mark[index]==1):
-        sum=a[index]
-        for i in range(index):
-            # print(i)
-            if(mark[i]==1 and (sum+a[i])<5):
-                sum+=a[i]
-                mark[i]=0
-                # print(mark)
-        res+=1
-        mark[index]=0
-        # print index,a[index],sum
-    index-=1
-print res
+a=map(int,input().split())
+emp={}
+for _ in a:
+    if _ in emp:
+        emp[_] +=1
+    else:
+        emp[_] = 1
+for i in range(1, 5):
+    if i not in emp:
+        emp[i] = 0
+res = emp[4]
+if emp[1] > 0 and emp[3] > 0:
+    min_ = min(emp[1], emp[3])
+    cost_1 = min_
+    if emp[1] < min_:
+        cost_1 = emp[1]
+    res += (cost_1 + 3*min_)//4
+    emp[1] -= cost_1
+    emp[3] -= min_
+if emp[2] > 1:
+    car = emp[2] // 2
+    res += car
+    emp[2] -= car*2
+if emp[1] > 0 and emp[2] > 0:
+    min_ = min(emp[1], emp[2])
+    cost_1 = min_*2
+    if emp[1] < min_*2:
+        cost_1 = emp[1]
+    res += ( cost_1 + 2*min_ + 3)//4
+    emp[1] -= cost_1
+    emp[2] -= min_
+if emp[1] > 0:
+    res += (emp[1] + 3) // 4
+if emp[2] > 0:
+    res += (emp[2]+1) // 2
+if emp[3] > 0:
+    res += emp[3]
+print(int(res))

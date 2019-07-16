@@ -1,5 +1,5 @@
-n=input()
-s=raw_input()
+n=int(input())
+s=input()
 Anton=0
 Danik=0
 for i in range(n):
@@ -8,8 +8,8 @@ for i in range(n):
     else:
         Danik+=1
 if Anton>Danik:
-    print "Anton"
+    print ("Anton")
 elif Anton<Danik:
-    print "Danik"
+    print ("Danik")
 else:
-    print "Friendship"
+    print ("Friendship")
